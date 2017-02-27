@@ -1,0 +1,5 @@
+GH_USER=
+GH_TOKEN=
+GH_BRANCH=master
+ELASTICSEARCH_REPO=github.com/elastic/elasticsearch.git
+XPACK_REPO=
