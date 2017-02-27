@@ -52,6 +52,7 @@ There are a limited number of commands you can use:
 
 - `copy` the build output
 - `start` Elasticsearch
+- `xpack` is used as an alias to commands in `bin/x-pack`
 
 See below for more detailed information about using the commands.
 
@@ -72,3 +73,11 @@ To run Elasticsearch, simply use the `start` command:
 Configuration is read from the `/config` path, and copied from the elasticsearch config path by default of no files exist there. Any additional arguments will be passed to elasticsearch executable, so something like this is valid:
 
 `docker run elastic-build start -Ediscovery.zen.ping.unicast.hosts=['']`
+
+## Using X-pack commands
+
+The `xpack` command is a pointed to the binaries available in `bin/x-pack`, so you need to also provide the x-pack command you wish to execute as well as any additional parameters it may need. For example, if you wanted to add a user, it would look something like this:
+
+`docker run elastic-build xpack users useradd admin -r superuser -p notsecure`
+
+Note that normal user prompts will not work, so you must pass in all required parameters.

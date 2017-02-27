@@ -24,6 +24,12 @@ case $CMD in
   fi
   /elastic/${ES_BUILD_NAME}/bin/elasticsearch -Epath.conf=/config $*
   ;;
+  xpack)
+  shift
+  XCMD=$1
+  shift
+  /elastic/${ES_BUILD_NAME}/bin/x-pack/"${XCMD}" $*
+  ;;
   *)
   echo "Please specify valid command: "
   echo "  start - Starts elasticsearch"
