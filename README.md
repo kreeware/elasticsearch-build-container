@@ -60,7 +60,7 @@ See below for more detailed information about using the commands.
 
 To copy the build zip files, you will need to set up a local path as the `/build` volume and run the image with the `copy` command, like so:
 
-`docker run -v "${BUILD}":/build elastic-build copy`
+`docker run -v "$(pwd)/build":/build elastic-build copy`
 
 If you're on a unix machine, simply run `./copy.sh`
 
