@@ -48,10 +48,12 @@ If you're not on a unix machine, you'll need to pass in some build arguments. Co
 
 # Running the image
 
-There are 2 things this image can do:
+There are a limited number of commands you can use:
 
 - `copy` the build output
 - `start` Elasticsearch
+
+See below for more detailed information about using the commands.
 
 ## Copying the build assets
 
@@ -66,3 +68,7 @@ If you're on a unix machine, simply run `./copy.sh`
 To run Elasticsearch, simply use the `start` command: 
 
 `docker run elastic-build start`
+
+Configuration is read from the `/config` path, and copied from the elasticsearch config path by default of no files exist there. Any additional arguments will be passed to elasticsearch executable, so something like this is valid:
+
+`docker run elastic-build start -Ediscovery.zen.ping.unicast.hosts=['']`

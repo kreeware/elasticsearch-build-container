@@ -16,11 +16,13 @@ case $CMD in
   cp /repos/elasticsearch/distribution/zip/build/distributions/*.zip /build \
   && cp /repos/elasticsearch-extra/x-pack-elasticsearch/plugin/build/distributions/*.zip /build
   ;;
+  # start elasticsearch
   start)
+  shift
   if [ ! -f /config/elasticsearch.yml ]; then
     cp /elastic/${ES_BUILD_NAME}/config/* /config
   fi
-  /elastic/${ES_BUILD_NAME}/bin/elasticsearch -Epath.conf=/config
+  /elastic/${ES_BUILD_NAME}/bin/elasticsearch -Epath.conf=/config $*
   ;;
   *)
   echo "Please specify valid command: "
