@@ -20,7 +20,7 @@ case $CMD in
   start)
   shift
   if [ ! -f /config/elasticsearch.yml ]; then
-    cp /elastic/${ES_BUILD_NAME}/config/* /config
+    cp -r /elastic/${ES_BUILD_NAME}/config/* /config
   fi
   /elastic/${ES_BUILD_NAME}/bin/elasticsearch -Epath.conf=/config $*
   ;;
