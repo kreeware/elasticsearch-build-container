@@ -37,13 +37,17 @@ RUN rm -rf ~/.elastic
 
 # prepare elasticsearch for running
 WORKDIR /elastic
-# copy and set up the builds
+# copy and set up the builds, install x-pack
 RUN cp /repos/elasticsearch/distribution/zip/build/distributions/*.zip . \
   && cp /repos/elasticsearch-extra/x-pack-elasticsearch/plugin/build/distributions/*.zip . \
-  && unzip elasticsearch*.zip
+  && unzip elasticsearch*.zip \
+  && VERSION=`echo elasticsearch-*.zip | sed 's/elasticsearch-//' | sed 's/\.[^\.]*$//'` \
+  && ./"elasticsearch-${VERSION}"/bin/elasticsearch-plugin install -b file:///elastic/"x-pack-${VERSION}.zip"
 # copy and setup helper scripts
 COPY scripts/* ./
 RUN chmod +x *.sh
+
+# allow elasticsearch access on port 9200
 EXPOSE 9200
 
 # ENTRYPOINT ["/elastic/runner.sh"]
