@@ -1,4 +1,4 @@
-FROM frekele/gradle:2.13-jdk8
+FROM frekele/gradle:3.3-jdk8
 
 LABEL version="2.0"
 LABEL description="Containerized build for Elasticsearch and X-pack"
